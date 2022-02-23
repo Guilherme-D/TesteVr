@@ -29,4 +29,12 @@ public class CardsServiceImpl implements CardsService {
                 });
         return cardsDtoResponseEntity;
     }
+
+    @Override
+    public ResponseEntity<Double> getBalanceByCardNumber(String cardNumber) {
+        ResponseEntity<Double> doubleResponseEntity = Optional.ofNullable(this.cardsRepository.findOneByNumber(cardNumber))
+                .map(card -> ResponseEntity.ok().body(card.getBalance()))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+        return doubleResponseEntity;
+    }
 }

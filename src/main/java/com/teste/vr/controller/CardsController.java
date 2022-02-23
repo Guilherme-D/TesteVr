@@ -6,15 +6,16 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Controller
 @RequestMapping("/cartoes")
-public class UsersController {
+public class CardsController {
 
     @Autowired
     private CardsService cardsService;
@@ -27,4 +28,12 @@ public class UsersController {
         return this.cardsService.createCard(request);
     }
 
+    @GetMapping(path = "/{cardNumber}")
+    @ApiOperation(value = "Obter saldo do Cartão")
+    public ResponseEntity<Double> getBalance(
+            @RequestParam
+            String cardNumber
+    ){
+        return this.cardsService.getBalanceByCardNumber(cardNumber);
+    }
 }

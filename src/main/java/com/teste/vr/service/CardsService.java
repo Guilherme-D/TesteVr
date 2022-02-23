@@ -5,4 +5,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface CardsService {
     ResponseEntity<CardsDto> createCard(CardsDto request);
+
+    ResponseEntity<Double> getBalanceByCardNumber(String cardNumber);
 }

@@ -2,7 +2,7 @@ set foreign_key_checks=0;
 
 CREATE TABLE cards (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    number INT(16) NOT NULL,
+    number VARCHAR (16) NOT NULL,
     password VARCHAR(100) NOT NULL,
     balance DECIMAL(20,2) NOT NULL,
 

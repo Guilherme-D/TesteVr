@@ -20,7 +20,7 @@ public class TransactionsController {
     private TransactionsService transactionsService;
 
     @PostMapping(path = "")
-    @ApiOperation(value = "Criar um cartão")
+    @ApiOperation(value = "Realizar uma transação")
     public ResponseEntity<String> createTransaction(
             @Valid @RequestBody TransactionsDto request
     ){

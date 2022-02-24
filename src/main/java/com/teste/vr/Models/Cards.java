@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cards")
@@ -23,13 +24,13 @@ public class Cards {
     private String password;
 
     @Min(value = 0, message = "Valor do saldo não pode ser menor que 0")
-    @NotNull(message = "Campo ballance não pode ser nulo")
-    private Double balance;
+    @NotNull(message = "Campo balance não pode ser nulo")
+    private BigDecimal balance;
 
     public Cards() {
     }
 
-    public Cards(String number, String password, Double balance) {
+    public Cards(String number, String password, BigDecimal balance) {
         this.number = number;
         this.password = password;
         this.balance = balance;
@@ -59,11 +60,11 @@ public class Cards {
         this.password = password;
     }
 
-    public Double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

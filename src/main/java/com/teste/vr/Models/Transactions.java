@@ -3,9 +3,8 @@ package com.teste.vr.Models;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "transactions")
@@ -19,14 +18,15 @@ public class Transactions {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Cards card;
 
-    @Min(0)
+    @DecimalMin(value = "0.01", inclusive = false, message = "Campo value deve ser no mínimo 0.01")
+    @Digits(integer=20, fraction=2, message = "Campo value pode conter até 20 casas inteiras e 2 decimais")
     @NotNull(message = "Campo value não pode ser nulo")
-    private Double value;
+    private BigDecimal value;
 
     public Transactions() {
     }
 
-    public Transactions(Cards card, Double value) {
+    public Transactions(Cards card, BigDecimal value) {
         this.card = card;
         this.value = value;
     }
@@ -47,11 +47,11 @@ public class Transactions {
         this.card = card;
     }
 
-    public Double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

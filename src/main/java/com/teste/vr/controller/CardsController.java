@@ -9,9 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("/cartoes")
@@ -30,7 +28,7 @@ public class CardsController {
 
     @GetMapping(path = "/{cardNumber}")
     @ApiOperation(value = "Obter saldo do Cartão")
-    public ResponseEntity<Double> getBalance(
+    public ResponseEntity<BigDecimal> getBalance(
             @RequestParam
             String cardNumber
     ){

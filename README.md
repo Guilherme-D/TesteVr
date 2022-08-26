@@ -1,9 +1,9 @@
 # JAVA_VR
 Teste java VR
 
-#### Para o projeto foi utilizado o banco MySQL no docker criado com o arquivo __docker-compose.yml__ utilizando o comando:
+#### Para o projeto foi utilizado o banco MySQL no docker criado com o arquivo __docker-compose.yml__ utilizando o comando a partir da pasta raiz do projeto:
     
-    docker-compose -f docker-compose.yml up
+    docker-compose -f .\mini-autorizador\docker\docker-compose.yml up
     
 #### Ao executar o banco e o iniciar o projeto, o mesmo se conectará ao banco, e o flyway rodará os scripts para criação das tabelas automaticamente.
 
